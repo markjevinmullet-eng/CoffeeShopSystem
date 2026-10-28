@@ -68,7 +68,7 @@ public class DatabaseInitializer {
             stmt.execute(createOrderDetailsTable);
             stmt.execute(createActivityLogsTable);
 
-            // Insert default approved admin account
+            // Insert default approved manager account if not exists
             stmt.execute("INSERT OR IGNORE INTO users (username, password, roles, status) VALUES ('admin', 'admin123', 'MANAGER', 'APPROVED');");
 
         } catch (SQLException e) {

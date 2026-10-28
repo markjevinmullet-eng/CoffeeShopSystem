@@ -18,7 +18,7 @@ public class Main {
         UserDao userDao = new UserDao();
         Scanner scanner = new Scanner(System.in);
 
-        // 3. Delegate execution to Authentication.start()
+        // 3. Delegate execution to Authentication module
         Authentication auth = new Authentication(userDao, scanner);
         System.out.println("... Handover to Authentication Module.\n");
 

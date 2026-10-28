@@ -12,7 +12,6 @@ public class DatabaseConnection {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(URL);
-            // Enable SQLite Foreign Key constraints on every connection initialization
             if (conn != null) {
                 try (Statement stmt = conn.createStatement()) {
                     stmt.execute("PRAGMA foreign_keys = ON;");

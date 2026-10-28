@@ -52,6 +52,14 @@ public class Authentication {
             } else {
                 System.out.println("\n✅ Login successful!");
                 System.out.println("Welcome, " + user.username() + "! Role: " + user.roles() + " | Status: " + user.status());
+
+                // Route MANAGER to AdminMenu
+                if ("MANAGER".equalsIgnoreCase(user.roles())) {
+                    AdminMenu adminMenu = new AdminMenu(userDao, scanner, user);
+                    adminMenu.start();
+                } else {
+                    System.out.println("(Role menu for " + user.roles() + " is under development.)");
+                }
             }
         } else {
             System.out.println("❌ Invalid username or password.");
