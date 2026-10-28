@@ -12,7 +12,7 @@ public class DatabaseInitializer {
                 user_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 username TEXT NOT NULL UNIQUE,
                 password TEXT NOT NULL,
-                roles TEXT NOT NULL CHECK(roles IN ('MANAGER', 'CASHIER', 'CUSTOMER')),
+                roles TEXT NOT NULL,
                 status TEXT NOT NULL DEFAULT 'PENDING'
             );
         """;

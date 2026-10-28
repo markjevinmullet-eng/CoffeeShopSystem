@@ -53,7 +53,6 @@ public class Authentication {
                 System.out.println("\n✅ Login successful!");
                 System.out.println("Welcome, " + user.username() + "! Role: " + user.roles() + " | Status: " + user.status());
 
-                // Route MANAGER to AdminMenu
                 if ("MANAGER".equalsIgnoreCase(user.roles())) {
                     AdminMenu adminMenu = new AdminMenu(userDao, scanner, user);
                     adminMenu.start();
