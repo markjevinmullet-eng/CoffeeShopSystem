@@ -106,7 +106,6 @@ public class UserDao {
         }
     }
 
-    // --- Deliverable 7 Requirement ---
     public boolean updateUserRoleAndStatus(int userId, String newRole, String newStatus) {
         String sql = "UPDATE users SET roles = ?, status = ? WHERE user_id = ?";
         try (Connection conn = DatabaseConnection.connect();

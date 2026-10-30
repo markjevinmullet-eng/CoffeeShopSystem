@@ -68,8 +68,13 @@ public class DatabaseInitializer {
             stmt.execute(createOrderDetailsTable);
             stmt.execute(createActivityLogsTable);
 
-            // Insert default approved manager account if not exists
+            // Default admin account
             stmt.execute("INSERT OR IGNORE INTO users (username, password, roles, status) VALUES ('admin', 'admin123', 'MANAGER', 'APPROVED');");
+
+            // Sample initial products for testing cashier & customer ordering
+            stmt.execute("INSERT OR IGNORE INTO products (product_id, name, category, price, stock_quantity) VALUES (1, 'Caramel Macchiato', 'Coffee', 150.00, 50);");
+            stmt.execute("INSERT OR IGNORE INTO products (product_id, name, category, price, stock_quantity) VALUES (2, 'Matcha Latte', 'Tea', 160.00, 40);");
+            stmt.execute("INSERT OR IGNORE INTO products (product_id, name, category, price, stock_quantity) VALUES (3, 'Chocolate Croissant', 'Pastry', 90.00, 25);");
 
         } catch (SQLException e) {
             System.err.println("Initialization Error: " + e.getMessage());

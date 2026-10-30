@@ -53,11 +53,22 @@ public class Authentication {
                 System.out.println("\n✅ Login successful!");
                 System.out.println("Welcome, " + user.username() + "! Role: " + user.roles() + " | Status: " + user.status());
 
-                if ("MANAGER".equalsIgnoreCase(user.roles())) {
-                    AdminMenu adminMenu = new AdminMenu(userDao, scanner, user);
-                    adminMenu.start();
-                } else {
-                    System.out.println("(Role menu for " + user.roles() + " is under development.)");
+                // Route user based on their role
+                String role = user.roles().toUpperCase();
+                switch (role) {
+                    case "MANAGER" -> {
+                        AdminMenu adminMenu = new AdminMenu(userDao, scanner, user);
+                        adminMenu.start();
+                    }
+                    case "CASHIER" -> {
+                        CashierMenu cashierMenu = new CashierMenu(scanner, user);
+                        cashierMenu.start();
+                    }
+                    case "CUSTOMER" -> {
+                        CustomerMenu customerMenu = new CustomerMenu(scanner, user);
+                        customerMenu.start();
+                    }
+                    default -> System.out.println("❌ Unrecognized role menu.");
                 }
             }
         } else {
